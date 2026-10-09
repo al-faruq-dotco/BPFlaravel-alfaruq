@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\MatakuliahController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,8 +30,14 @@ Route::get('/about', function () {
     return view('halaman-about');
 });
 
-use App\Http\Controllers\MatakuliahController;
+Route::get('/home', function () {
+    return view('home');
+});
+
 
 Route::get('/matakuliah', 
 [MatakuliahController::class, 'index']);
 Route::get('/matakuliah/show/{kode?}', [MatakuliahController::class, 'show']);
+
+Route::post('question/store', [QuestionController::class, 'store'])
+		->name('question.store');
