@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\MatakuliahController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,3 +42,6 @@ Route::get('/matakuliah/show/{kode?}', [MatakuliahController::class, 'show']);
 
 Route::post('question/store', [QuestionController::class, 'store'])
 		->name('question.store');
+
+
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
